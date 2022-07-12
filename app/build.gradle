@@ -1,0 +1,84 @@
+apply plugin: "com.android.application"
+apply plugin: "kotlin-android"
+apply plugin: "kotlin-kapt"
+apply plugin: "androidx.navigation.safeargs.kotlin"
+apply plugin: "dagger.hilt.android.plugin"
+
+android {
+    compileSdkVersion versions.targetSdk
+    buildToolsVersion versions.buildTools
+
+    defaultConfig {
+        applicationId "com.jonapoul.fueltracker"
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
+        versionCode versions.appVersionCode
+        versionName versions.appVersionName
+        buildConfigField "org.threeten.bp.Instant", "BUILD_TIME", "org.threeten.bp.Instant.ofEpochMilli(" + System.currentTimeMillis() + "L)"
+        buildConfigField "String", "GIT_ID", "\"" + versions.gitId + "\""
+        archivesBaseName = "$applicationId-$versionName"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+    }
+
+    signingConfigs {
+        File propsFile = rootProject.file("local.properties")
+        if (propsFile.exists()) {
+            release {
+                Properties props = new Properties()
+                props.load(new FileInputStream(propsFile))
+                storeFile = file(props["RELEASE_STORE_FILE"])
+                storePassword = props["RELEASE_STORE_PASSWORD"]
+                keyAlias = props["RELEASE_KEY_ALIAS"]
+                keyPassword = props["RELEASE_KEY_PASSWORD"]
+                v2SigningEnabled = true
+            }
+        }
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            shrinkResources false
+        }
+        release {
+            minifyEnabled true
+            shrinkResources true
+            File propsFile = rootProject.file("local.properties")
+            if (propsFile.exists()) {
+                signingConfig signingConfigs.release
+            }
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    testOptions {
+        unitTests.all {
+            jvmArgs '-noverify'
+        }
+    }
+
+    buildFeatures.viewBinding true
+    kotlinOptions.jvmTarget = '1.8'
+
+    packagingOptions {
+        resources.excludes.add("META-INF/*")
+    }
+}
+
+dependencies {
+    /* Modules */
+    implementation project(":core")
+    implementation project(":ui-about")
+    implementation project(":ui-dashboard")
+    implementation project(":ui-settings")
+
+    /* DI */
+    implementation "com.google.dagger:hilt-android:$versions.hilt"
+    kapt "com.google.dagger:hilt-android-compiler:$versions.hilt"
+}

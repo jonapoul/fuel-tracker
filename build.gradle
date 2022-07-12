@@ -1,0 +1,65 @@
+buildscript {
+    apply from: "$rootProject.projectDir/versions.gradle"
+
+    repositories {
+        google()
+        mavenCentral()
+        maven { url "https://plugins.gradle.org/m2/" }
+        maven { url "https://jitpack.io" }
+    }
+
+    dependencies {
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$versions.navigation"
+        classpath "com.android.tools.build:gradle:$versions.gradle"
+        classpath "com.diffplug.spotless:spotless-plugin-gradle:$versions.spotless"
+        classpath "com.github.ben-manes:gradle-versions-plugin:$versions.gradle_versions"
+        classpath "com.jaredsburrows:gradle-license-plugin:$versions.license_plugin"
+        classpath "com.google.dagger:hilt-android-gradle-plugin:$versions.hilt"
+        classpath "io.gitlab.arturbosch.detekt:detekt-gradle-plugin:$versions.detekt"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
+        classpath "org.jetbrains.kotlinx:kover:$versions.kover"
+        classpath "org.jlleitschuh.gradle:ktlint-gradle:$versions.ktlint_gradle"
+    }
+}
+
+apply from: "gradle/kover.gradle"
+apply from: "gradle/dependency-update.gradle"
+
+allprojects {
+    def root = rootProject.projectDir
+    apply from: "$root/versions.gradle"
+    apply from: "$root/gradle/detekt.gradle"
+    apply from: "$root/gradle/ktlint.gradle"
+    apply from: "$root/gradle/spotless.gradle"
+    apply plugin: "project-report"
+
+    task runChecks() {
+        dependsOn "detekt"
+        dependsOn "spotlessCheck"
+        dependsOn "ktlintCheck"
+    }
+
+    repositories {
+        google()
+        mavenCentral()
+        maven { url "https://jitpack.io" }
+        mavenLocal()
+    }
+
+    def name = project.name
+    if (name != root.name && !name.startsWith("testing") && name != "app") {
+        apply from: "$root/gradle/build-common.gradle"
+    }
+}
+
+subprojects {
+    tasks.withType(Test) {
+        testLogging {
+            exceptionFormat 'FULL'
+            showCauses true
+            showExceptions true
+            showStackTraces true
+            showStandardStreams true
+        }
+    }
+}

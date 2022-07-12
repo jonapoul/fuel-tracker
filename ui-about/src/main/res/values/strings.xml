@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="log_description_text">If the app behaves strangely, use this screen to create a ZIP file containing the app\'s logs. You can then upload them to the project\'s GitHub page and file a bug report with it.</string>
+</resources>

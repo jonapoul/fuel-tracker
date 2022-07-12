@@ -1,0 +1,67 @@
+ext.runCommand = { String... args ->
+    def stdout = new ByteArrayOutputStream()
+    exec {
+        commandLine args
+        standardOutput = stdout
+    }
+    return stdout.toString().trim()
+}
+
+def getGitId = { ->
+    try {
+        def branch = runCommand('git', 'rev-parse', '--abbrev-ref', 'HEAD')
+        def hash = runCommand('git', 'rev-parse', '--short', 'HEAD').toUpperCase()
+        return branch + "-" + hash
+    } catch (Exception e) {
+        println("Failed to get git ID: ${e.message}")
+        return "NO-GIT-REPO"
+    }
+}
+
+ext.versions = [
+    // Build variables
+    minSdk                  : 26,
+    targetSdk               : 31,
+    gitId                   : getGitId(),
+    appVersionCode          : 1,
+    appVersionName          : '1.0.0',
+
+    // Plugins, etc
+    buildTools              : '30.0.3',
+    detekt                  : '1.20.0',
+    gradle                  : '7.2.1',
+    gradle_versions         : '0.42.0',
+    hilt                    : '2.42',
+    kotlin                  : '1.6.21',
+    kover                   : '0.5.1',
+    ktlint                  : '0.45.2',
+    ktlint_gradle           : '10.3.0',
+    leakcanary              : '2.9.1',
+    license_plugin          : '0.9.0',
+    multidex                : '2.0.1',
+    spotless                : '6.8.0',
+
+    // Library versions
+    about                   : '2.0.1',
+    activity_ktx            : '1.5.0',
+    android_common          : '1.11.1',
+    appcompat               : '1.4.2',
+    apptheme                : '1.2.0',
+    core_ktx                : '1.8.0',
+    flow_preferences        : '1.7.0',
+    fragment                : '1.5.0',
+    lifecycle               : '2.5.0',
+    logback_android         : '2.0.0',
+    material                : '1.6.1',
+    moshi                   : '1.12.0',
+    okhttp                  : '5.0.0-alpha.2',
+    markwon                 : '4.6.2',
+    navigation              : '2.5.0',
+    preference              : '1.2.0',
+    process_phoenix         : '2.1.2',
+    room                    : '2.4.2',
+    slf4j                   : '1.7.36',
+    threetenabp             : '1.4.0',
+    threetenbp              : '1.6.0',
+    timber                  : '5.0.1',
+]

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="accent">@color/primary400</color>
+    <color name="primary">@color/primary800</color>
+    <color name="primaryVariant">@color/primary900</color>
+    <color name="secondaryAccent">@color/secondary400</color>
+    <color name="secondary">@color/secondary500</color>
+    <color name="secondaryVariant">@color/secondary900</color>
+    <color name="onPrimary">@color/white</color>
+    <color name="onSecondary">@color/black</color>
+    <color name="antiOnSurface">@color/white</color>
+    <color name="onSurfaceAlt">#8A000000</color>
+    <color name="statusBar">@color/primaryVariant</color>
+    <color name="primaryOnSurface">@color/primaryVariant</color>
+    <color name="secondaryOnSurface">@color/secondaryVariant</color>
+    <color name="onError">@color/white</color>
+    <color name="onToolbar">@color/onPrimary</color>
+    <color name="disabledButton">#e0e0e0</color>
+
+    <color name="onSnackbarOrange">#ff9955</color>
+</resources>

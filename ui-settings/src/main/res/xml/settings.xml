@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.jonapoul.common.ui.prefs.CommonPreferenceCategory
+        android:icon="@drawable/ic_settings"
+        app:cpc_tint="@color/primaryOnSurface"
+        app:title="Example Settings">
+
+        <com.jonapoul.theme.AppThemePreference />
+
+        <SwitchPreference
+            android:icon="@drawable/ic_check"
+            android:title="Example Setting"
+            app:key="enable_something"
+            app:useSimpleSummaryProvider="true" />
+
+    </com.jonapoul.common.ui.prefs.CommonPreferenceCategory>
+
+</PreferenceScreen>

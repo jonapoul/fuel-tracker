@@ -1,0 +1,40 @@
+name: Build & Test
+
+on:
+  pull_request:
+    branches:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout the repo
+        uses: actions/checkout@v2
+
+      - name: Validate Gradle Wrapper
+        uses: gradle/wrapper-validation-action@v1
+
+      - name: Configure JDK
+        uses: actions/setup-java@v1
+        with:
+          java-version: 14
+
+      - name: Enable Gradle Execution
+        run: chmod +x ./gradlew
+
+      - name: Static Analysis
+        run: ./gradlew runChecks
+
+      - name: Build
+        run: ./gradlew assembleDebug
+
+      - name: Test
+        #run: ./gradlew koverMergedVerify
+        run: ./gradlew testDebugUnitTest
+
+      - name: Publish Test Report
+        uses: mikepenz/action-junit-report@v2
+        if: always() # always run even if the previous step fails
+        with:
+          report_paths: '**/build/test-results/test*/TEST-*.xml'

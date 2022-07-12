@@ -1,0 +1,6 @@
+include ':app'
+include ':core'
+include ':data-db'
+include ':ui-about'
+include ':ui-dashboard'
+include ':ui-settings'

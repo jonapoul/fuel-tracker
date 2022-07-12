@@ -1,0 +1,66 @@
+apply plugin: "com.android.library"
+apply plugin: "kotlin-android"
+apply plugin: "kotlin-kapt"
+apply plugin: "dagger.hilt.android.plugin"
+
+android {
+    compileSdkVersion versions.targetSdk
+    buildToolsVersion versions.buildTools
+
+    defaultConfig {
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
+        versionCode versions.appVersionCode
+        versionName versions.appVersionName
+        testInstrumentationRunner "com.jonapoul.fueltracker.test.HiltTestRunner"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+        freeCompilerArgs = [
+            '-Xjvm-default=compatibility',
+            "-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi"
+        ]
+    }
+
+    buildFeatures.viewBinding true
+
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+            returnDefaultValues = true
+            all {
+                jvmArgs '-noverify'
+            }
+        }
+    }
+
+    packagingOptions {
+        resources.excludes.add("META-INF/*")
+    }
+}
+
+dependencies {
+    if (project.name != "core") {
+        implementation project(":core")
+    }
+
+    /* Hilt */
+    implementation "com.google.dagger:hilt-android:$versions.hilt"
+    kapt "com.google.dagger:hilt-android-compiler:$versions.hilt"
+    testImplementation "com.google.dagger:hilt-android-testing:$versions.hilt"
+    kaptTest "com.google.dagger:hilt-android-compiler:$versions.hilt"
+    androidTestImplementation "com.google.dagger:hilt-android-testing:$versions.hilt"
+    kaptAndroidTest "com.google.dagger:hilt-android-compiler:$versions.hilt"
+
+    /* Unit Test */
+    testImplementation "com.github.jonapoul.android-common:testing-unit:$versions.android_common"
+    androidTestImplementation("com.github.jonapoul.android-common:testing-android:$versions.android_common") {
+        exclude group: "org.threeten"
+    }
+}

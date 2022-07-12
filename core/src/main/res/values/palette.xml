@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary050">#f1f8e9</color>
+    <color name="primary100">#dcedc8</color>
+    <color name="primary200">#c5e1a5</color>
+    <color name="primary300">#aed581</color>
+    <color name="primary400">#9ccc65</color>
+    <color name="primary500">#8bc34a</color>
+    <color name="primary600">#7cb342</color>
+    <color name="primary700">#7cb342</color>
+    <color name="primary800">#558b2f</color>
+    <color name="primary900">#33691e</color>
+    <color name="primaryA100">#ccff90</color>
+    <color name="primaryA200">#b2ff59</color>
+    <color name="primaryA400">#76ff03</color>
+    <color name="primaryA700">#64dd17</color>
+
+    <color name="secondary050">#e0f7fa</color>
+    <color name="secondary100">#b2ebf2</color>
+    <color name="secondary200">#80deea</color>
+    <color name="secondary300">#4dd0e1</color>
+    <color name="secondary400">#26c6da</color>
+    <color name="secondary500">#00bcd4</color>
+    <color name="secondary600">#00acc1</color>
+    <color name="secondary700">#0097a7</color>
+    <color name="secondary800">#00838f</color>
+    <color name="secondary900">#006064</color>
+    <color name="secondaryA100">#84ffff</color>
+    <color name="secondaryA200">#18ffff</color>
+    <color name="secondaryA400">#00e5ff</color>
+    <color name="secondaryA700">#00b8d4</color>
+</resources>

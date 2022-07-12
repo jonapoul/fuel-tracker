@@ -1,0 +1,40 @@
+dependencies {
+    /* Debug builds only */
+    debugApi "com.squareup.leakcanary:leakcanary-android:$versions.leakcanary"
+
+    /* Kotlin */
+    api "org.jetbrains.kotlin:kotlin-stdlib:$versions.kotlin"
+    api "org.jetbrains.kotlin:kotlin-reflect:$versions.kotlin"
+
+    /* AndroidX */
+    api "androidx.activity:activity-ktx:$versions.activity_ktx"
+    api "androidx.appcompat:appcompat:$versions.appcompat"
+    api "androidx.core:core-ktx:$versions.core_ktx"
+    api "androidx.fragment:fragment-ktx:$versions.fragment"
+    api "androidx.lifecycle:lifecycle-runtime-ktx:$versions.lifecycle"
+    api "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.lifecycle"
+    api "androidx.multidex:multidex:$versions.multidex"
+    api "androidx.navigation:navigation-fragment-ktx:$versions.navigation"
+    api "androidx.navigation:navigation-ui-ktx:$versions.navigation"
+    api "androidx.preference:preference-ktx:$versions.preference"
+
+    /* UI */
+    api "com.github.jonapoul:apptheme:$versions.apptheme"
+    api "com.google.android.material:material:$versions.material"
+
+    /* Logging */
+    implementation "org.slf4j:slf4j-api:$versions.slf4j"
+    implementation "com.github.tony19:logback-android:$versions.logback_android"
+
+    /* Utils */
+    api "com.fredporciuncula:flow-preferences:$versions.flow_preferences"
+    api ("com.github.jonapoul.android-common:lib-core:$versions.android_common") {
+        exclude group: "org.threeten"
+    }
+    api "com.github.jonapoul.android-common:lib-data:$versions.android_common"
+    api "com.github.jonapoul.android-common:lib-domain:$versions.android_common"
+    api "com.github.jonapoul.android-common:lib-ui:$versions.android_common"
+    api "com.jakewharton.timber:timber:$versions.timber"
+    api "com.jakewharton.threetenabp:threetenabp:$versions.threetenabp"
+    api "org.threeten:threetenbp:$versions.threetenbp:no-tzdb"
+}
