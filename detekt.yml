@@ -14,6 +14,10 @@ exceptions:
 formatting:
   NoWildcardImports:
     active: false
+  TrailingComma:
+    active: true
+    allowTrailingComma: true
+    allowTrailingCommaOnCallSite: true
 
 style:
   UnnecessaryAbstractClass:

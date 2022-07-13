@@ -8,7 +8,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 internal class DashboardViewModel @Inject constructor(
-    private val navigationUseCase: DashboardNavigationUseCase
+    private val navigationUseCase: DashboardNavigationUseCase,
 ) : ViewModel() {
     fun navigateToAbout(navController: NavController) {
         navigationUseCase.navigateToAbout(navController)

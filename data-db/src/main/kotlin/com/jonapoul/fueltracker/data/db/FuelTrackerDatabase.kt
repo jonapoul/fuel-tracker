@@ -12,9 +12,7 @@ import com.jonapoul.fueltracker.data.model.MilesPerHour
         RefuelEntity::class,
     ],
     version = 1,
-    autoMigrations = [
-
-    ]
+    autoMigrations = [],
 )
 @TypeConverters(
     InstantConverter::class,

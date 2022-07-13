@@ -37,7 +37,7 @@ internal class RefuelDaoTest {
             /* Given no items in the database */
             assertEquals(
                 expected = emptyList(),
-                actual = awaitItem()
+                actual = awaitItem(),
             )
 
             /* When an entity is inserted */
@@ -47,7 +47,7 @@ internal class RefuelDaoTest {
             assertEquals(expected = 1L, actual = insertedId)
             assertEquals(
                 expected = listOf(EXAMPLE_ENTITY),
-                actual = awaitItem()
+                actual = awaitItem(),
             )
             cancelAndIgnoreRemainingEvents()
         }
@@ -68,7 +68,7 @@ internal class RefuelDaoTest {
             /* Then both items are emitted */
             assertEquals(
                 expected = listOf(EXAMPLE_ENTITY, differentEntity),
-                actual = awaitItem().sortedBy { it.id }
+                actual = awaitItem().sortedBy { it.id },
             )
             cancelAndIgnoreRemainingEvents()
         }
@@ -89,7 +89,7 @@ internal class RefuelDaoTest {
             /* Then the latter entity is emitted */
             assertEquals(
                 expected = listOf(differentEntity),
-                actual = awaitItem().sortedBy { it.id }
+                actual = awaitItem().sortedBy { it.id },
             )
             cancelAndIgnoreRemainingEvents()
         }
@@ -170,7 +170,7 @@ internal class RefuelDaoTest {
             val entities = List(size = 20) {
                 EXAMPLE_ENTITY.copy(
                     id = it.toLong() + 1L,
-                    time = baseTime + (tenMinutes.multipliedBy(it.toLong()))
+                    time = baseTime + (tenMinutes.multipliedBy(it.toLong())),
                 )
             }
             refuelDao.insertAll(entities)
@@ -203,7 +203,7 @@ internal class RefuelDaoTest {
             mileage = MILEAGE,
             averageSpeed = SPEED,
             vendor = VENDOR,
-            town = TOWN
+            town = TOWN,
         )
     }
 }

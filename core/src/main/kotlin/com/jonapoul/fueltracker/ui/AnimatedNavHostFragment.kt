@@ -31,7 +31,7 @@ internal class AnimatedNavHostFragment : NavHostFragment() {
     override fun onCreateNavHostController(navHostController: NavHostController) {
         super.onCreateNavHostController(navHostController)
         navHostController.navigatorProvider.addNavigator(
-            FragmentNavigatorWithDefaultAnimations(requireContext(), childFragmentManager, id)
+            FragmentNavigatorWithDefaultAnimations(requireContext(), childFragmentManager, id),
         )
     }
 }
