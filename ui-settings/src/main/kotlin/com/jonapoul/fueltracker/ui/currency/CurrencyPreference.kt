@@ -44,6 +44,7 @@ internal class CurrencyPreference @JvmOverloads constructor(
     override fun onSetInitialValue(defaultValue: Any?) {
         val default = if (defaultValue is String) defaultValue else DEFAULT.toString()
         currency = Currency.fromAcronym(getPersistedString(default))
+        setIcon(currency.flagIcon)
     }
 
     override fun setValue(value: String?) {
