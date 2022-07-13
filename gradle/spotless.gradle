@@ -7,12 +7,4 @@ spotless {
         trimTrailingWhitespace()
         endWithNewline()
     }
-
-    kotlin {
-        target '**/*.kt'
-        ktlint()
-        indentWithSpaces()
-        trimTrailingWhitespace()
-        endWithNewline()
-    }
 }

@@ -60,6 +60,8 @@ dependencies {
 
     /* Unit Test */
     testImplementation "com.github.jonapoul.android-common:testing-unit:$versions.android_common"
+
+    /* Instrumented Test */
     androidTestImplementation("com.github.jonapoul.android-common:testing-android:$versions.android_common") {
         exclude group: "org.threeten"
     }

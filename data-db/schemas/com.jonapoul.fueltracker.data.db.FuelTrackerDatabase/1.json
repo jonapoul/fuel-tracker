@@ -1,0 +1,76 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "95f3fa552a38fd82132741ece5772f92",
+    "entities": [
+      {
+        "tableName": "RefuelEntity",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `time` INTEGER NOT NULL, `distanceDriven` REAL NOT NULL, `distanceRemaining` REAL NOT NULL, `mileage` REAL NOT NULL, `averageSpeed` REAL NOT NULL, `vendor` TEXT, `town` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "time",
+            "columnName": "time",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "distanceDriven",
+            "columnName": "distanceDriven",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "distanceRemaining",
+            "columnName": "distanceRemaining",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "mileage",
+            "columnName": "mileage",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "averageSpeed",
+            "columnName": "averageSpeed",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "vendor",
+            "columnName": "vendor",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "town",
+            "columnName": "town",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '95f3fa552a38fd82132741ece5772f92')"
+    ]
+  }
+}

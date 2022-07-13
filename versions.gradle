@@ -34,7 +34,7 @@ ext.versions = [
     hilt                    : '2.42',
     kotlin                  : '1.6.21',
     kover                   : '0.5.1',
-    ktlint                  : '0.45.2',
+    ktlint                  : '0.46.1',
     ktlint_gradle           : '10.3.0',
     leakcanary              : '2.9.1',
     license_plugin          : '0.9.0',
@@ -44,7 +44,7 @@ ext.versions = [
     // Library versions
     about                   : '2.0.1',
     activity_ktx            : '1.5.0',
-    android_common          : '1.11.1',
+    android_common          : '1.11.2',
     appcompat               : '1.4.2',
     apptheme                : '1.2.0',
     core_ktx                : '1.8.0',

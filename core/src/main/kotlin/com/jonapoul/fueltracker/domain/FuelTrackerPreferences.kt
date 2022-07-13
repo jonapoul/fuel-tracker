@@ -8,7 +8,7 @@ import javax.inject.Inject
 
 class FuelTrackerPreferences @Inject constructor(
     private val prefs: SharedPreferences,
-    private val flowSharedPreferences: FlowSharedPreferences
+    private val flowSharedPreferences: FlowSharedPreferences,
 ) {
     private inline fun <reified T> SharedPreferences.putIfNotNull(pref: PrefPair<T>, value: T?) {
         edit {
@@ -21,8 +21,5 @@ class FuelTrackerPreferences @Inject constructor(
                 else -> error("Unexpected type: ${T::class.java.simpleName}")
             }
         }
-    }
-
-    companion object {
     }
 }

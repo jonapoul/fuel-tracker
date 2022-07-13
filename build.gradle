@@ -43,7 +43,6 @@ allprojects {
         google()
         mavenCentral()
         maven { url "https://jitpack.io" }
-        mavenLocal()
     }
 
     def name = project.name

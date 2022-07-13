@@ -6,17 +6,17 @@ import com.jonapoul.fueltracker.domain.DashboardNavDirections
 import javax.inject.Inject
 
 internal class DashboardNavigationUseCase @Inject constructor(
-    private val directions: DashboardNavDirections
+    private val directions: DashboardNavDirections,
 ) {
     fun navigateToAbout(navController: NavController) {
         navController.safelyNavigate(
-            directions.toAbout()
+            directions.toAbout(),
         )
     }
 
     fun navigateToSettings(navController: NavController) {
         navController.safelyNavigate(
-            directions.toSettings()
+            directions.toSettings(),
         )
     }
 }

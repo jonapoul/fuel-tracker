@@ -15,9 +15,9 @@ internal class ProvidesPreferencesModule {
     @Provides
     fun flowSharedPreferences(
         sharedPreferences: SharedPreferences,
-        @IODispatcher ioDispatcher: CoroutineDispatcher
+        @IODispatcher ioDispatcher: CoroutineDispatcher,
     ): FlowSharedPreferences = FlowSharedPreferences(
         sharedPreferences,
-        ioDispatcher
+        ioDispatcher,
     )
 }

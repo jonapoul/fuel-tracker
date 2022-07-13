@@ -15,7 +15,7 @@ import java.io.File
 internal class ProvidesAboutResourcesModule {
     @Provides
     fun resources(
-        @ApplicationContext context: Context
+        @ApplicationContext context: Context,
     ): AboutResources = object : AboutResources {
         override val logDirectory: File =
             File(context.dataDir, "logs")
@@ -38,6 +38,7 @@ internal class ProvidesAboutResourcesModule {
         override val developerName: String =
             "Jon Poulton"
 
+        @Suppress("MagicNumber")
         override val developmentYear: Int =
             2022
 
