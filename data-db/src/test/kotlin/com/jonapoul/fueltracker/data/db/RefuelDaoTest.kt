@@ -3,6 +3,7 @@ package com.jonapoul.fueltracker.data.db
 import app.cash.turbine.test
 import com.jonapoul.common.test.CoroutineRule
 import com.jonapoul.common.test.db.RoomDatabaseRule
+import com.jonapoul.fueltracker.data.Currency
 import com.jonapoul.fueltracker.data.model.miles
 import com.jonapoul.fueltracker.data.model.mpg
 import com.jonapoul.fueltracker.data.model.mph
@@ -194,6 +195,8 @@ internal class RefuelDaoTest {
         val SPEED = 50.mph
         const val VENDOR = "SAINSBURYS"
         const val TOWN = "TOWNSVILLE"
+        const val TOTAL_PRICE = 100.0
+        const val PRICE_PER_VOLUME = 1.89
 
         val EXAMPLE_ENTITY = RefuelEntity(
             id = 1L,
@@ -204,6 +207,9 @@ internal class RefuelDaoTest {
             averageSpeed = SPEED,
             vendor = VENDOR,
             town = TOWN,
+            totalPrice = TOTAL_PRICE,
+            pricePerVolume = PRICE_PER_VOLUME,
+            currency = Currency.GBP,
         )
     }
 }
