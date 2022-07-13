@@ -29,6 +29,6 @@ class FuelTrackerPreferences @Inject constructor(
     }
 
     companion object {
-        val CURRENCY = PrefPair(key = "currency", default = Currency.DEFAULT.acronym)
+        val CURRENCY = PrefPair(key = "currency", default = Currency.default().acronym)
     }
 }

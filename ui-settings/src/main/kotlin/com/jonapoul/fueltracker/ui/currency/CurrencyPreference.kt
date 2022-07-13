@@ -71,6 +71,6 @@ internal class CurrencyPreference @JvmOverloads constructor(
     }
 
     private companion object {
-        val DEFAULT = Currency.DEFAULT
+        val DEFAULT = Currency.default()
     }
 }
