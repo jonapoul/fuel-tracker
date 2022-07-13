@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="nav_settings">Settings</string>
+
+    <string name="currency_title">Default Currency</string>
 </resources>

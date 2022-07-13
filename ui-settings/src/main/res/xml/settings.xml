@@ -9,11 +9,10 @@
 
         <com.jonapoul.theme.AppThemePreference />
 
-        <SwitchPreference
-            android:icon="@drawable/ic_check"
-            android:title="Example Setting"
-            app:key="enable_something"
-            app:useSimpleSummaryProvider="true" />
+        <com.jonapoul.fueltracker.ui.currency.CurrencyPreference
+            android:icon="@drawable/ic_currency"
+            android:key="currency"
+            android:title="@string/currency_title" />
 
     </com.jonapoul.common.ui.prefs.CommonPreferenceCategory>
 
