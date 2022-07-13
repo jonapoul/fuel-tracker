@@ -1,0 +1,18 @@
+android {
+    defaultConfig {
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments += ["room.schemaLocation": "$projectDir/schemas".toString()]
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation "androidx.room:room-ktx:$versions.room"
+    implementation "androidx.room:room-runtime:$versions.room"
+    kapt "androidx.room:room-compiler:$versions.room"
+
+    testImplementation "com.github.jonapoul.android-common:testing-db:$versions.android_common"
+    androidTestImplementation "com.github.jonapoul.android-common:testing-db:$versions.android_common"
+}
