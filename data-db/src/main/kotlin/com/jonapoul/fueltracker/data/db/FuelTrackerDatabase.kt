@@ -19,6 +19,7 @@ import com.jonapoul.fueltracker.data.model.MilesPerHour
     Miles.Converter::class,
     MilesPerHour.Converter::class,
     MilesPerGallon.Converter::class,
+    CurrencyConverter::class,
 )
 internal abstract class FuelTrackerDatabase : RoomDatabase() {
     abstract fun refuelDao(): RefuelDao

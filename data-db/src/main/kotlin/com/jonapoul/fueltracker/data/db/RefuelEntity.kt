@@ -3,6 +3,7 @@ package com.jonapoul.fueltracker.data.db
 import androidx.annotation.Keep
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.jonapoul.fueltracker.data.Currency
 import com.jonapoul.fueltracker.data.model.Miles
 import com.jonapoul.fueltracker.data.model.MilesPerGallon
 import com.jonapoul.fueltracker.data.model.MilesPerHour
@@ -20,4 +21,7 @@ data class RefuelEntity(
     val averageSpeed: MilesPerHour,
     val vendor: String?,
     val town: String?,
+    val totalPrice: Double,
+    val pricePerVolume: Double,
+    val currency: Currency,
 )
