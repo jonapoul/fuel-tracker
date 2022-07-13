@@ -3,6 +3,7 @@ package com.jonapoul.fueltracker.data.db
 import app.cash.turbine.test
 import com.jonapoul.common.test.CoroutineRule
 import com.jonapoul.common.test.db.RoomDatabaseRule
+import com.jonapoul.fueltracker.data.Currency
 import com.jonapoul.fueltracker.data.model.miles
 import com.jonapoul.fueltracker.data.model.mpg
 import com.jonapoul.fueltracker.data.model.mph
@@ -208,6 +209,7 @@ internal class RefuelDaoTest {
             town = TOWN,
             totalPrice = TOTAL_PRICE,
             pricePerVolume = PRICE_PER_VOLUME,
+            currency = Currency.GBP,
         )
     }
 }
