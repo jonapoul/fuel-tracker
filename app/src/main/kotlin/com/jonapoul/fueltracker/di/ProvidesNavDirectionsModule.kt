@@ -2,6 +2,7 @@ package com.jonapoul.fueltracker.di
 
 import androidx.navigation.NavDirections
 import com.jonapoul.fueltracker.domain.DashboardNavDirections
+import com.jonapoul.fueltracker.domain.InputMode
 import com.jonapoul.fueltracker.ui.DashboardFragmentDirections
 import dagger.Module
 import dagger.Provides
@@ -13,6 +14,9 @@ import dagger.hilt.components.SingletonComponent
 internal class ProvidesNavDirectionsModule {
     @Provides
     fun dashboard(): DashboardNavDirections = object : DashboardNavDirections {
+        override fun toInput(mode: InputMode): NavDirections =
+            DashboardFragmentDirections.toInput(mode)
+
         override fun toAbout(): NavDirections =
             DashboardFragmentDirections.toAbout()
 

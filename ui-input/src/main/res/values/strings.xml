@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="suffix_miles">miles</string>
+    <string name="suffix_mpg">mpg</string>
+    <string name="suffix_mph">mph</string>
+
+    <string name="field_distance_driven">Distance driven since last fill-up</string>
+    <string name="field_distance_remaining">Estimated distance remaining</string>
+    <string name="field_mileage">Avg. mileage</string>
+    <string name="field_speed">Avg. speed</string>
+    <string name="field_vendor">Vendor (Optional)</string>
+    <string name="field_location">Location (Optional)</string>
+    <string name="field_total_cost">Total cost</string>
+    <string name="field_price_per_volume">Cost per litre</string>
+
+    <string name="button_save">Save</string>
+    <string name="button_locate">Use my phone\'s location</string>
+    <string name="button_next_date">Next day</string>
+    <string name="button_prev_date">Previous day</string>
+
+    <string name="time_picker_title">Enter time</string>
+    <string name="date_picker_title">Enter date</string>
+    <string name="section_time_date">Time/Date:</string>
+    <string name="section_distance">Distance:</string>
+    <string name="section_driving_style">Driving Style:</string>
+    <string name="section_fuel_cost">Refuel Cost:</string>
+    <string name="section_location">Refuel Location:</string>
+</resources>
