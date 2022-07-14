@@ -5,10 +5,10 @@ import org.threeten.bp.Instant
 
 internal object InstantConverter {
     @TypeConverter
-    fun toInstant(ms: Long): Instant =
-        Instant.ofEpochMilli(ms)
+    fun toInstant(string: String): Instant =
+        Instant.parse(string)
 
     @TypeConverter
-    fun fromInstant(instant: Instant): Long =
-        instant.toEpochMilli()
+    fun fromInstant(instant: Instant): String =
+        instant.toString()
 }

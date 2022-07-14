@@ -205,10 +205,10 @@ internal class RefuelDaoTest {
             distanceRemaining = DISTANCE_REMAINING,
             mileage = MILEAGE,
             averageSpeed = SPEED,
+            totalCost = TOTAL_PRICE,
+            costPerVolume = PRICE_PER_VOLUME,
             vendor = VENDOR,
-            town = TOWN,
-            totalPrice = TOTAL_PRICE,
-            pricePerVolume = PRICE_PER_VOLUME,
+            location = TOWN,
             currency = Currency.GBP,
         )
     }
