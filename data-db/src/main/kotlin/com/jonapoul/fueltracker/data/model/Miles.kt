@@ -3,9 +3,6 @@ package com.jonapoul.fueltracker.data.model
 import androidx.room.TypeConverter
 
 data class Miles(val miles: Double) : Comparable<Miles> {
-    fun toMetres(): Double =
-        miles * METRES_PER_MILE
-
     override fun compareTo(other: Miles): Int =
         miles.compareTo(other.miles)
 
