@@ -32,44 +32,51 @@
                 android:layout_height="wrap_content"
                 android:text="@string/section_distance" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/distance_driven"
-                style="@style/Theme.FuelTracker.TextInputLayout"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/field_distance_driven"
-                app:errorEnabled="true"
-                app:startIconDrawable="@drawable/ic_car"
-                app:suffixText="@string/suffix_miles">
+                android:orientation="horizontal">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    style="@style/Theme.FuelTracker.TextInputEditText"
-                    android:layout_width="match_parent"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/distance_driven"
+                    style="@style/Theme.FuelTracker.TextInputLayout"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:inputType="numberDecimal"
-                    tools:text="123.4" />
+                    android:layout_weight="1"
+                    android:hint="@string/field_distance_driven"
+                    app:errorEnabled="true"
+                    app:suffixText="@string/suffix_miles">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        style="@style/Theme.FuelTracker.TextInputEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        tools:text="123.4" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/distance_remaining"
-                style="@style/Theme.FuelTracker.TextInputLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/field_distance_remaining"
-                app:errorEnabled="true"
-                app:startIconDrawable="@drawable/ic_battery_low"
-                app:suffixText="@string/suffix_miles">
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputEditText
-                    style="@style/Theme.FuelTracker.TextInputEditText"
-                    android:layout_width="match_parent"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/distance_remaining"
+                    style="@style/Theme.FuelTracker.TextInputLayout"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:digits="0123456789."
-                    android:inputType="numberDecimal"
-                    tools:text="12" />
+                    android:layout_weight="1"
+                    android:hint="@string/field_distance_remaining"
+                    app:errorEnabled="true"
+                    app:suffixText="@string/suffix_miles">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        style="@style/Theme.FuelTracker.TextInputEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:digits="0123456789."
+                        android:inputType="numberDecimal"
+                        tools:text="12" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
 
             <TextView
                 android:layout_width="match_parent"
@@ -90,7 +97,6 @@
                     android:layout_weight="1"
                     android:hint="@string/field_mileage"
                     app:errorEnabled="true"
-                    app:startIconDrawable="@drawable/ic_petrol"
                     app:suffixText="@string/suffix_mpg">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -111,7 +117,6 @@
                     android:layout_weight="1"
                     android:hint="@string/field_speed"
                     app:errorEnabled="true"
-                    app:startIconDrawable="@drawable/ic_speed"
                     app:suffixText="@string/suffix_mph">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -145,7 +150,6 @@
                     android:layout_weight="1"
                     android:hint="@string/field_total_cost"
                     app:errorEnabled="true"
-                    app:startIconDrawable="@drawable/ic_payment"
                     tools:prefixText="£">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -158,14 +162,13 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/price_per_volume"
+                    android:id="@+id/cost_per_volume"
                     style="@style/Theme.FuelTracker.TextInputLayout"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:hint="@string/field_price_per_volume"
                     app:errorEnabled="true"
-                    app:startIconDrawable="@drawable/ic_sell"
                     tools:prefixText="£">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -190,8 +193,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/field_vendor"
-                app:errorEnabled="false"
-                app:startIconDrawable="@drawable/ic_shop">
+                app:errorEnabled="false">
 
                 <com.google.android.material.textfield.TextInputEditText
                     style="@style/Theme.FuelTracker.TextInputEditText"
@@ -214,8 +216,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:hint="@string/field_location"
-                    app:errorEnabled="false"
-                    app:startIconDrawable="@drawable/ic_location">
+                    app:errorEnabled="false">
 
                     <com.google.android.material.textfield.TextInputEditText
                         style="@style/Theme.FuelTracker.TextInputEditText"
