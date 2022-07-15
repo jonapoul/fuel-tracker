@@ -3,6 +3,7 @@ package com.jonapoul.fueltracker.ui
 import android.os.Bundle
 import android.view.View
 import androidx.activity.addCallback
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
@@ -13,21 +14,31 @@ import com.jonapoul.common.ui.dialogs.setSimpleNegativeButton
 import com.jonapoul.common.ui.dialogs.setSimplePositiveButton
 import com.jonapoul.common.ui.dialogs.showCautionDialog
 import com.jonapoul.common.ui.view.enableIf
+import com.jonapoul.common.ui.view.hideIfTrue
 import com.jonapoul.common.ui.view.setText
+import com.jonapoul.common.ui.view.showIfTrue
 import com.jonapoul.common.ui.viewbinding.viewBinding
 import com.jonapoul.fueltracker.data.Currency
+import com.jonapoul.fueltracker.data.LocationState
 import com.jonapoul.fueltracker.domain.InputMode
 import com.jonapoul.fueltracker.domain.model.DecimalFormats
 import com.jonapoul.fueltracker.input.R
 import com.jonapoul.fueltracker.input.databinding.FragmentInputBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Job
+import timber.log.Timber
 import java.text.DecimalFormat
 
 @AndroidEntryPoint
 class InputFragment : CommonFragment(layout = R.layout.fragment_input, menu = null) {
     override val binding by viewBinding(FragmentInputBinding::bind)
     private val viewModel by viewModels<InputViewModel>()
+
+    private val locationPermissionContract = registerForActivityResult(
+        ActivityResultContracts.RequestMultiplePermissions(),
+    ) { results ->
+        Timber.d("results = ${results.toList().toTypedArray().contentDeepToString()}")
+    }
 
     private val mode by lazy {
         arguments?.getParcelable<InputMode>(KEY_INPUT_MODE)
@@ -46,6 +57,7 @@ class InputFragment : CommonFragment(layout = R.layout.fragment_input, menu = nu
         initialiseBackButton()
         initialiseValidation()
         initialiseSaveButton()
+        initialiseLocationButton()
         fetchExistingData()
         collectFlow(viewModel.currency, ::onCurrency)
         collectFlow(viewModel.enableSaveButton, ::onEnableSaveButton)
@@ -92,6 +104,24 @@ class InputFragment : CommonFragment(layout = R.layout.fragment_input, menu = nu
                     navController.navigateUp()
                 },
             )
+        }
+    }
+
+    private fun initialiseLocationButton() {
+        binding.locationButton.setOnClickListener {
+            collectFlow(viewModel.fetchLocation()) {
+                val isLoading = it is LocationState.Finding
+                binding.loadingButton.showIfTrue(isLoading)
+                binding.locationButton.hideIfTrue(isLoading)
+                when (it) {
+                    is LocationState.PermissionsRequired ->
+                        locationPermissionContract.launch(it.permissions.toTypedArray())
+                    is LocationState.Success ->
+                        binding.location.setText(it.location)
+                    else ->
+                        return@collectFlow
+                }
+            }
         }
     }
 

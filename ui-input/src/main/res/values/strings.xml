@@ -33,4 +33,7 @@
 
     <string name="failed_fetching">Failed fetching data from the database: %1$s</string>
     <string name="failed_finalising">Failed converting data from draft to a finalised entity</string>
+    <string name="gps_disabled">Your GPS is disabled! Enable it, then this button will automatically grab your location.</string>
+    <string name="gps_disabled_action">Fix</string>
+    <string name="address_string">%1$s, %2$s, %3$s, %4$s</string>
 </resources>
