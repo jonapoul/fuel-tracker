@@ -4,8 +4,8 @@
     <string name="suffix_mpg">mpg</string>
     <string name="suffix_mph">mph</string>
 
-    <string name="field_distance_driven">Distance driven since last fill-up</string>
-    <string name="field_distance_remaining">Estimated distance remaining</string>
+    <string name="field_distance_driven">Driven</string>
+    <string name="field_distance_remaining">Remaining</string>
     <string name="field_mileage">Avg. mileage</string>
     <string name="field_speed">Avg. speed</string>
     <string name="field_vendor">Vendor (Optional)</string>
@@ -25,4 +25,9 @@
     <string name="section_driving_style">Driving Style:</string>
     <string name="section_fuel_cost">Refuel Cost:</string>
     <string name="section_location">Refuel Location:</string>
+
+    <string name="invalid_input">Invalid input</string>
+
+    <string name="back_dialog_title">Go back?</string>
+    <string name="back_dialog_message">This will discard any unsaved changes.</string>
 </resources>
