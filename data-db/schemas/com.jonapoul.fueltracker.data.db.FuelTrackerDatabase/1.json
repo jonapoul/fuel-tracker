@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "95f3fa552a38fd82132741ece5772f92",
+    "identityHash": "57746dee1ad60ecd5ae3168e6e23674d",
     "entities": [
       {
         "tableName": "RefuelEntity",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `time` INTEGER NOT NULL, `distanceDriven` REAL NOT NULL, `distanceRemaining` REAL NOT NULL, `mileage` REAL NOT NULL, `averageSpeed` REAL NOT NULL, `vendor` TEXT, `town` TEXT)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `time` TEXT NOT NULL, `distanceDriven` REAL NOT NULL, `distanceRemaining` REAL NOT NULL, `mileage` REAL NOT NULL, `averageSpeed` REAL NOT NULL, `totalCost` REAL NOT NULL, `costPerVolume` REAL NOT NULL, `vendor` TEXT, `location` TEXT, `currency` TEXT NOT NULL)",
         "fields": [
           {
             "fieldPath": "id",
@@ -17,7 +17,7 @@
           {
             "fieldPath": "time",
             "columnName": "time",
-            "affinity": "INTEGER",
+            "affinity": "TEXT",
             "notNull": true
           },
           {
@@ -45,16 +45,34 @@
             "notNull": true
           },
           {
+            "fieldPath": "totalCost",
+            "columnName": "totalCost",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "costPerVolume",
+            "columnName": "costPerVolume",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
             "fieldPath": "vendor",
             "columnName": "vendor",
             "affinity": "TEXT",
             "notNull": false
           },
           {
-            "fieldPath": "town",
-            "columnName": "town",
+            "fieldPath": "location",
+            "columnName": "location",
             "affinity": "TEXT",
             "notNull": false
+          },
+          {
+            "fieldPath": "currency",
+            "columnName": "currency",
+            "affinity": "TEXT",
+            "notNull": true
           }
         ],
         "primaryKey": {
@@ -70,7 +88,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '95f3fa552a38fd82132741ece5772f92')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '57746dee1ad60ecd5ae3168e6e23674d')"
     ]
   }
 }

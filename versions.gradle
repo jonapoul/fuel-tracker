@@ -42,7 +42,7 @@ ext.versions = [
     spotless                : '6.8.0',
 
     // Library versions
-    about                   : '2.0.1',
+    about                   : '2.0.2',
     activity_ktx            : '1.5.0',
     android_common          : '1.11.2',
     appcompat               : '1.4.2',
@@ -54,8 +54,6 @@ ext.versions = [
     logback_android         : '2.0.0',
     material                : '1.6.1',
     moshi                   : '1.12.0',
-    okhttp                  : '5.0.0-alpha.2',
-    markwon                 : '4.6.2',
     navigation              : '2.5.0',
     preference              : '1.2.0',
     process_phoenix         : '2.1.2',

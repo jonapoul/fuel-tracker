@@ -1,6 +1,7 @@
 package com.jonapoul.fueltracker.ui
 
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -44,6 +45,12 @@ internal class FuelTrackerActivity : AppCompatActivity() {
         Timber.d("onSnackbarMessage $snackbar")
         snackbar?.notify?.invoke(notifier, binding.root)
     }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean =
+        if (item.itemId == android.R.id.home) {
+            onBackPressedDispatcher.onBackPressed()
+            true
+        } else super.onOptionsItemSelected(item)
 
     override fun onSupportNavigateUp(): Boolean {
         Timber.d("onSupportNavigateUp")

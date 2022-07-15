@@ -76,6 +76,7 @@ dependencies {
     implementation project(":core")
     implementation project(":ui-about")
     implementation project(":ui-dashboard")
+    implementation project(":ui-input")
     implementation project(":ui-settings")
 
     /* DI */

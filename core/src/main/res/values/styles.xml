@@ -15,4 +15,24 @@
 
     <style name="Theme.FuelTracker.PopupOverlay" parent="ThemeOverlay.AppCompat.DayNight" />
 
+    <style name="Theme.FuelTracker.TextInputEditText" parent="@style/Widget.MaterialComponents.TextInputEditText.FilledBox.Dense">
+        <item name="android:inputType">text</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:imeOptions">actionNext|flagNoPersonalizedLearning</item>
+    </style>
+
+    <style name="Theme.FuelTracker.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.FilledBox.Dense">
+        <item name="errorEnabled">true</item>
+        <item name="errorIconTint">@color/onSurfaceRed</item>
+        <item name="errorTextColor">@color/onSurfaceRed</item>
+        <item name="boxStrokeErrorColor">@color/onSurfaceRed</item>
+    </style>
+
+    <style name="Theme.FuelTracker.Button.Outlined" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="iconTint">@color/outline_button</item>
+        <item name="strokeColor">@color/outline_button</item>
+        <item name="android:textColor">@color/outline_button</item>
+        <item name="strokeWidth">@dimen/very_small</item>
+    </style>
+
 </resources>

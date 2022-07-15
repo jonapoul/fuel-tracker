@@ -10,6 +10,10 @@ import javax.inject.Inject
 internal class DashboardViewModel @Inject constructor(
     private val navigationUseCase: DashboardNavigationUseCase,
 ) : ViewModel() {
+    fun createNewEntry(navController: NavController) {
+        navigationUseCase.createNewEntry(navController)
+    }
+
     fun navigateToAbout(navController: NavController) {
         navigationUseCase.navigateToAbout(navController)
     }

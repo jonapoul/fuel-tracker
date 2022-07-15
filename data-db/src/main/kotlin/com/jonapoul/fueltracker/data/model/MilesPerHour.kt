@@ -2,7 +2,10 @@ package com.jonapoul.fueltracker.data.model
 
 import androidx.room.TypeConverter
 
-data class MilesPerHour(val mph: Double) {
+data class MilesPerHour(val mph: Double) : Comparable<MilesPerHour> {
+    override fun compareTo(other: MilesPerHour): Int =
+        mph.compareTo(other.mph)
+
     override fun toString(): String =
         "$mph mph"
 

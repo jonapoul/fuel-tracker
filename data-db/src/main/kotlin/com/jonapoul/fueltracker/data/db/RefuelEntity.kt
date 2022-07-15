@@ -19,9 +19,9 @@ data class RefuelEntity(
     val distanceRemaining: Miles,
     val mileage: MilesPerGallon,
     val averageSpeed: MilesPerHour,
+    val totalCost: Double,
+    val costPerVolume: Double,
     val vendor: String?,
-    val town: String?,
-    val totalPrice: Double,
-    val pricePerVolume: Double,
+    val location: String?,
     val currency: Currency,
 )
