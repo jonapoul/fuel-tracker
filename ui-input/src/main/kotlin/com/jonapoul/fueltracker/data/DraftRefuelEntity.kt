@@ -19,7 +19,7 @@ internal data class DraftRefuelEntity(
     var location: String? = null,
     val currency: Currency? = null,
 ) {
-    fun finaliseOrNull(): RefuelEntity? = try {
+    fun toEntityOrNull(): RefuelEntity? = try {
         RefuelEntity(
             id,
             time,

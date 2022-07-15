@@ -8,6 +8,7 @@ import com.jonapoul.fueltracker.domain.InputMode
 import com.jonapoul.fueltracker.domain.ObserveCurrencyUseCase
 import com.jonapoul.fueltracker.domain.model.FetchEntityResult
 import com.jonapoul.fueltracker.domain.usecase.FetchEntityUseCase
+import com.jonapoul.fueltracker.domain.usecase.SaveToDatabaseUseCase
 import com.jonapoul.fueltracker.domain.usecase.ValidateInputUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
@@ -25,6 +26,7 @@ import javax.inject.Inject
 internal class InputViewModel @Inject constructor(
     observeCurrencyUseCase: ObserveCurrencyUseCase,
     private val fetchEntityUseCase: FetchEntityUseCase,
+    private val saveToDatabaseUseCase: SaveToDatabaseUseCase,
     private val validateInputUseCase: ValidateInputUseCase,
 ) : ViewModel() {
 
@@ -65,6 +67,15 @@ internal class InputViewModel @Inject constructor(
             InputMode.Create -> {
                 /* Just create a new empty entity */
                 draft.value = DraftRefuelEntity.empty()
+            }
+        }
+    }
+
+    fun saveData(onSuccess: () -> Unit) {
+        viewModelScope.launch {
+            val success = saveToDatabaseUseCase.saveToDatabase(draft.value)
+            if (success) {
+                onSuccess.invoke()
             }
         }
     }

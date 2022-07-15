@@ -5,6 +5,7 @@ import com.jonapoul.common.di.IODispatcher
 import com.jonapoul.common.ui.SnackbarFeed
 import com.jonapoul.common.ui.SnackbarMessage
 import com.jonapoul.fueltracker.data.db.RefuelDao
+import com.jonapoul.fueltracker.domain.InputTextCreator
 import com.jonapoul.fueltracker.domain.model.FetchEntityResult
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
@@ -13,6 +14,7 @@ import javax.inject.Inject
 internal class FetchEntityUseCase @Inject constructor(
     @IODispatcher private val io: CoroutineDispatcher,
     private val dao: RefuelDao,
+    private val textCreator: InputTextCreator,
     private val snackbarFeed: SnackbarFeed,
 ) {
     suspend fun fetchEntity(entityId: Long): FetchEntityResult {
@@ -28,7 +30,9 @@ internal class FetchEntityUseCase @Inject constructor(
         }.also {
             if (it is FetchEntityResult.Failure) {
                 snackbarFeed.add(
-                    SnackbarMessage.Warning(it.errorMessage),
+                    SnackbarMessage.Warning(
+                        textCreator.failedFetchingEntity(it.errorMessage),
+                    ),
                 )
             }
         }

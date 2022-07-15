@@ -30,4 +30,7 @@
 
     <string name="back_dialog_title">Go back?</string>
     <string name="back_dialog_message">This will discard any unsaved changes.</string>
+
+    <string name="failed_fetching">Failed fetching data from the database: %1$s</string>
+    <string name="failed_finalising">Failed converting data from draft to a finalised entity</string>
 </resources>

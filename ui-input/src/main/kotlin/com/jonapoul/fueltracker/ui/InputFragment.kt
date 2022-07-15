@@ -45,6 +45,7 @@ class InputFragment : CommonFragment(layout = R.layout.fragment_input, menu = nu
 
         initialiseBackButton()
         initialiseValidation()
+        initialiseSaveButton()
         fetchExistingData()
         collectFlow(viewModel.currency, ::onCurrency)
         collectFlow(viewModel.enableSaveButton, ::onEnableSaveButton)
@@ -81,6 +82,16 @@ class InputFragment : CommonFragment(layout = R.layout.fragment_input, menu = nu
             costPerVolume.setUpValidation(viewModel::validateCostPer)
             vendor.setUpValidation(viewModel::validateVendor)
             location.setUpValidation(viewModel::validateLocation)
+        }
+    }
+
+    private fun initialiseSaveButton() {
+        binding.saveButton.setOnClickListener {
+            viewModel.saveData(
+                onSuccess = {
+                    navController.navigateUp()
+                },
+            )
         }
     }
 
