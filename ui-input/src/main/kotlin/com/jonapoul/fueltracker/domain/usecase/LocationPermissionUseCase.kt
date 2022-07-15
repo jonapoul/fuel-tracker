@@ -67,7 +67,7 @@ internal class LocationPermissionUseCase @Inject constructor(
             }
 
             if (!hasLocationPermission()) {
-                Timber.v("no permission, requesting")N
+                Timber.v("no permission, requesting")
                 emit(LocationState.PermissionsRequired(PERMISSIONS))
                 return
             }
