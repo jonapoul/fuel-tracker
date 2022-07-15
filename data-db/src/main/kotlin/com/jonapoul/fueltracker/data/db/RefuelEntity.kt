@@ -14,7 +14,7 @@ import org.threeten.bp.Instant
 data class RefuelEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0L,
-    val time: Instant,
+    val instant: Instant,
     val distanceDriven: Miles,
     val distanceRemaining: Miles,
     val mileage: MilesPerGallon,

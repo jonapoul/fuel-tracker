@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "57746dee1ad60ecd5ae3168e6e23674d",
+    "identityHash": "991a633c8c4d230618b92f078e46a9ef",
     "entities": [
       {
         "tableName": "RefuelEntity",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `time` TEXT NOT NULL, `distanceDriven` REAL NOT NULL, `distanceRemaining` REAL NOT NULL, `mileage` REAL NOT NULL, `averageSpeed` REAL NOT NULL, `totalCost` REAL NOT NULL, `costPerVolume` REAL NOT NULL, `vendor` TEXT, `location` TEXT, `currency` TEXT NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `instant` TEXT NOT NULL, `distanceDriven` REAL NOT NULL, `distanceRemaining` REAL NOT NULL, `mileage` REAL NOT NULL, `averageSpeed` REAL NOT NULL, `totalCost` REAL NOT NULL, `costPerVolume` REAL NOT NULL, `vendor` TEXT, `location` TEXT, `currency` TEXT NOT NULL)",
         "fields": [
           {
             "fieldPath": "id",
@@ -15,8 +15,8 @@
             "notNull": true
           },
           {
-            "fieldPath": "time",
-            "columnName": "time",
+            "fieldPath": "instant",
+            "columnName": "instant",
             "affinity": "TEXT",
             "notNull": true
           },
@@ -88,7 +88,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '57746dee1ad60ecd5ae3168e6e23674d')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '991a633c8c4d230618b92f078e46a9ef')"
     ]
   }
 }

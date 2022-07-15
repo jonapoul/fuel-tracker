@@ -8,7 +8,7 @@ import org.threeten.bp.Instant
 
 internal data class DraftRefuelEntity(
     val id: Long,
-    var time: Instant,
+    var instant: Instant,
     var distanceDriven: Miles? = null,
     var distanceRemaining: Miles? = null,
     var mileage: MilesPerGallon? = null,
@@ -22,7 +22,7 @@ internal data class DraftRefuelEntity(
     fun toEntityOrNull(): RefuelEntity? = try {
         RefuelEntity(
             id,
-            time,
+            instant,
             distanceDriven!!,
             distanceRemaining!!,
             mileage!!,
@@ -41,13 +41,13 @@ internal data class DraftRefuelEntity(
         fun empty(): DraftRefuelEntity =
             DraftRefuelEntity(
                 id = 0L,
-                time = Instant.now(),
+                instant = Instant.now(),
             )
 
         fun fromEntity(entity: RefuelEntity?): DraftRefuelEntity =
             if (entity == null) empty() else DraftRefuelEntity(
                 id = entity.id,
-                time = entity.time,
+                instant = entity.instant,
                 distanceDriven = entity.distanceDriven,
                 distanceRemaining = entity.distanceRemaining,
                 mileage = entity.mileage,

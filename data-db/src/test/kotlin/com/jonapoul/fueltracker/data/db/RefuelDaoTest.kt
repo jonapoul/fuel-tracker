@@ -166,12 +166,12 @@ internal class RefuelDaoTest {
         refuelDao.getAll().test {
             /* Given 20 rows in the database */
             assertEquals(expected = emptyList(), actual = awaitItem())
-            val baseTime = EXAMPLE_ENTITY.time
+            val baseTime = EXAMPLE_ENTITY.instant
             val tenMinutes = Duration.ofMinutes(10)
             val entities = List(size = 20) {
                 EXAMPLE_ENTITY.copy(
                     id = it.toLong() + 1L,
-                    time = baseTime + (tenMinutes.multipliedBy(it.toLong())),
+                    instant = baseTime + (tenMinutes.multipliedBy(it.toLong())),
                 )
             }
             refuelDao.insertAll(entities)
@@ -181,8 +181,8 @@ internal class RefuelDaoTest {
             val latest = refuelDao.getLatest()
 
             /* Then the result was the item with the latest time */
-            val latestInstant = entities.maxOf { it.time }
-            assertEquals(expected = latestInstant, actual = latest?.time)
+            val latestInstant = entities.maxOf { it.instant }
+            assertEquals(expected = latestInstant, actual = latest?.instant)
             cancelAndIgnoreRemainingEvents()
         }
     }
@@ -200,7 +200,7 @@ internal class RefuelDaoTest {
 
         val EXAMPLE_ENTITY = RefuelEntity(
             id = 1L,
-            time = TIME,
+            instant = TIME,
             distanceDriven = DISTANCE_DRIVEN,
             distanceRemaining = DISTANCE_REMAINING,
             mileage = MILEAGE,
