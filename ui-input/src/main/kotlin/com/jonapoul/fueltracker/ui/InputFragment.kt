@@ -38,6 +38,9 @@ class InputFragment : CommonFragment(layout = R.layout.fragment_input, menu = nu
         ActivityResultContracts.RequestMultiplePermissions(),
     ) { results ->
         Timber.d("results = ${results.toList().toTypedArray().contentDeepToString()}")
+        if (results.values.all { it }) { // all granted
+            binding.locationButton.performClick()
+        }
     }
 
     private val mode by lazy {
