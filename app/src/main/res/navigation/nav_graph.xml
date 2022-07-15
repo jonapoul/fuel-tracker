@@ -45,7 +45,7 @@
         android:id="@+id/nav_list"
         android:name="com.jonapoul.fueltracker.ui.ListFragment"
         android:label="@string/nav_list"
-        tools:layout="@layout/fragment_list" >
+        tools:layout="@layout/fragment_list">
 
         <action
             android:id="@+id/to_input"

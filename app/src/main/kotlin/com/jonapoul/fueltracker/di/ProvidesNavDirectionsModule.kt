@@ -28,4 +28,13 @@ internal class ProvidesNavDirectionsModule {
         override fun toSettings(): NavDirections =
             DashboardFragmentDirections.toSettings()
     }
+
+    @Provides
+    fun list(): ListNavDirections = object : ListNavDirections {
+        override fun toCreate(): NavDirections =
+            ListFragmentDirections.toInput(InputMode.Create)
+
+        override fun toEdit(entityId: Long): NavDirections =
+            ListFragmentDirections.toInput(InputMode.Edit(entityId))
+    }
 }
