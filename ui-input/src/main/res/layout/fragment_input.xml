@@ -228,11 +228,42 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <ImageButton
+                <FrameLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:contentDescription="@string/button_locate"
-                    android:src="@drawable/ic_my_location" />
+                    android:layout_height="match_parent">
+
+                    <ImageButton
+                        android:id="@+id/location_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:contentDescription="@string/button_locate"
+                        android:src="@drawable/ic_my_location" />
+
+                    <FrameLayout
+                        android:id="@+id/loading_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="gone">
+
+                        <ImageButton
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:clickable="false"
+                            android:focusable="false"
+                            app:backgroundTint="@color/disabledButton"
+                            tools:ignore="ContentDescription" />
+
+                        <ProgressBar
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:indeterminate="true"
+                            android:indeterminateTint="@color/grey"
+                            android:paddingVertical="@dimen/large" />
+
+                    </FrameLayout>
+
+                </FrameLayout>
 
             </LinearLayout>
 

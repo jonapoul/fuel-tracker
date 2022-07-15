@@ -4,10 +4,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jonapoul.fueltracker.data.Currency
 import com.jonapoul.fueltracker.data.DraftRefuelEntity
+import com.jonapoul.fueltracker.data.LocationState
 import com.jonapoul.fueltracker.domain.InputMode
 import com.jonapoul.fueltracker.domain.ObserveCurrencyUseCase
 import com.jonapoul.fueltracker.domain.model.FetchEntityResult
 import com.jonapoul.fueltracker.domain.usecase.FetchEntityUseCase
+import com.jonapoul.fueltracker.domain.usecase.LocationPermissionUseCase
 import com.jonapoul.fueltracker.domain.usecase.SaveToDatabaseUseCase
 import com.jonapoul.fueltracker.domain.usecase.ValidateInputUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -28,6 +30,7 @@ internal class InputViewModel @Inject constructor(
     private val fetchEntityUseCase: FetchEntityUseCase,
     private val saveToDatabaseUseCase: SaveToDatabaseUseCase,
     private val validateInputUseCase: ValidateInputUseCase,
+    private val locationPermissionUseCase: LocationPermissionUseCase,
 ) : ViewModel() {
 
     private val draft = MutableStateFlow<DraftRefuelEntity?>(null)
@@ -117,4 +120,7 @@ internal class InputViewModel @Inject constructor(
             .also { Timber.v("Updated to $it") }
         return this != null
     }
+
+    fun fetchLocation(): Flow<LocationState> =
+        locationPermissionUseCase.fetchLocation()
 }
