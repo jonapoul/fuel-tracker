@@ -18,4 +18,11 @@
         android:text="@string/add_new_button"
         app:icon="@drawable/ic_add" />
 
+    <Button
+        android:id="@+id/view_all_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/view_all_button"
+        app:icon="@drawable/ic_list" />
+
 </LinearLayout>

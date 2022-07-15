@@ -17,6 +17,7 @@ class DashboardFragment : CommonFragment(layout = R.layout.fragment_dashboard, m
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.createButton.setOnClickListener { viewModel.createNewEntry(navController) }
+        binding.viewAllButton.setOnClickListener { viewModel.navigateToList(navController) }
     }
 
     override fun onMenuItemSelected(menuItemId: Int): Boolean {

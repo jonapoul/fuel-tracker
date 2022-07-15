@@ -14,6 +14,10 @@ internal class DashboardViewModel @Inject constructor(
         navigationUseCase.createNewEntry(navController)
     }
 
+    fun navigateToList(navController: NavController) {
+        navigationUseCase.navigateToList(navController)
+    }
+
     fun navigateToAbout(navController: NavController) {
         navigationUseCase.navigateToAbout(navController)
     }
