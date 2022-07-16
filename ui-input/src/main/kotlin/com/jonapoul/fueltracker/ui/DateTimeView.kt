@@ -29,6 +29,7 @@ class DateTimeView @JvmOverloads constructor(
 
     private lateinit var selectedTime: LocalTime
     private lateinit var selectedDate: LocalDate
+    private var onChangeListener: ((Instant) -> Unit)? = null
 
     var instant: Instant
         get() {
@@ -38,6 +39,7 @@ class DateTimeView @JvmOverloads constructor(
         set(value) {
             setTime(LocalTime.from(value.zoned))
             setDate(LocalDate.from(value.zoned))
+            onChangeListener?.invoke(instant)
         }
 
     init {
@@ -52,7 +54,10 @@ class DateTimeView @JvmOverloads constructor(
                 .setMinute(selectedTime.minute)
                 .build()
             timePicker.addAllListeners(
-                onPositive = { hour, minute -> setTime(LocalTime.of(hour, minute)) },
+                onPositive = { hour, minute ->
+                    setTime(LocalTime.of(hour, minute))
+                    onChangeListener?.invoke(instant)
+                },
                 onNegative = { timePicker.dismiss() },
             )
             timePicker.show(findFragment<Fragment>().parentFragmentManager, toString())
@@ -70,14 +75,25 @@ class DateTimeView @JvmOverloads constructor(
                 onPositive = {
                     val enteredInstant = Instant.ofEpochMilli(it)
                     setDate(LocalDate.from(enteredInstant.zoned))
+                    onChangeListener?.invoke(instant)
                 },
                 onNegative = { datePicker.dismiss() },
             )
             datePicker.show(findFragment<Fragment>().parentFragmentManager, toString())
         }
 
-        binding.arrowLeft.setOnClickListener { setDate(selectedDate.minusDays(1L)) }
-        binding.arrowRight.setOnClickListener { setDate(selectedDate.plusDays(1L)) }
+        binding.arrowLeft.setOnClickListener {
+            setDate(selectedDate.minusDays(1L))
+            onChangeListener?.invoke(instant)
+        }
+        binding.arrowRight.setOnClickListener {
+            setDate(selectedDate.plusDays(1L))
+            onChangeListener?.invoke(instant)
+        }
+    }
+
+    fun setChangeListener(onChange: (Instant) -> Unit) {
+        onChangeListener = onChange
     }
 
     private fun setTime(time: LocalTime) {

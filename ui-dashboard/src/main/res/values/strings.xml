@@ -6,4 +6,5 @@
     <string name="menu_about">About</string>
 
     <string name="add_new_button">Add new</string>
+    <string name="view_all_button">View all</string>
 </resources>

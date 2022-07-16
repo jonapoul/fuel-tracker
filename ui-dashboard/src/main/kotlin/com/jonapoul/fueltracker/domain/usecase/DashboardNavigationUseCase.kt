@@ -15,6 +15,12 @@ internal class DashboardNavigationUseCase @Inject constructor(
         )
     }
 
+    fun navigateToList(navController: NavController) {
+        navController.safelyNavigate(
+            directions.toList(),
+        )
+    }
+
     fun navigateToAbout(navController: NavController) {
         navController.safelyNavigate(
             directions.toAbout(),

@@ -20,7 +20,7 @@ interface RefuelDao {
     @Query("SELECT * FROM RefuelEntity")
     fun getAll(): Flow<List<RefuelEntity>>
 
-    @Query("SELECT * FROM RefuelEntity ORDER BY time DESC LIMIT 1;")
+    @Query("SELECT * FROM RefuelEntity ORDER BY instant DESC LIMIT 1;")
     suspend fun getLatest(): RefuelEntity?
 
     @Query("SELECT * FROM RefuelEntity WHERE id=:id")

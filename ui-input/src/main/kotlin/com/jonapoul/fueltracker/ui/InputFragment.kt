@@ -38,6 +38,9 @@ class InputFragment : CommonFragment(layout = R.layout.fragment_input, menu = nu
         ActivityResultContracts.RequestMultiplePermissions(),
     ) { results ->
         Timber.d("results = ${results.toList().toTypedArray().contentDeepToString()}")
+        if (results.values.all { it }) { // all granted
+            binding.locationButton.performClick()
+        }
     }
 
     private val mode by lazy {
@@ -86,6 +89,7 @@ class InputFragment : CommonFragment(layout = R.layout.fragment_input, menu = nu
 
     private fun initialiseValidation() {
         with(binding) {
+            dateTime.setChangeListener(viewModel::updateInstant)
             distanceDriven.setUpValidation(viewModel::validateDistanceDriven)
             distanceRemaining.setUpValidation(viewModel::validateDistanceLeft)
             mileage.setUpValidation(viewModel::validateMileage)
@@ -129,7 +133,7 @@ class InputFragment : CommonFragment(layout = R.layout.fragment_input, menu = nu
         var job: Job? = null
         job = collectFlow(viewModel.existingData) { entity ->
             with(binding) {
-                dateTime.instant = entity.time
+                dateTime.instant = entity.instant
                 setTextIfNotNull(entity.distanceDriven?.miles, DECIMAL_FORMAT_DISTANCE, distanceDriven)
                 setTextIfNotNull(entity.distanceRemaining?.miles, DECIMAL_FORMAT_DISTANCE, distanceRemaining)
                 setTextIfNotNull(entity.mileage?.mpg, DECIMAL_FORMAT_MILEAGE, mileage)
