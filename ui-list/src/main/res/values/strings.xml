@@ -10,6 +10,7 @@
     <string name="edit_button">Edit</string>
 
     <string name="colon">:</string>
+    <string name="view_instant">Date</string>
     <string name="view_distance_driven">Driven</string>
     <string name="view_distance_remaining">Remaining</string>
     <string name="view_mileage">Mileage</string>

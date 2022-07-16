@@ -11,6 +11,11 @@ internal enum class EntityField(
     @StringRes val title: Int,
     val value: RefuelEntity.() -> String,
 ) {
+    Instant(
+        title = R.string.view_instant,
+        value = { DATE_FORMATTER.format(instant) },
+    ),
+
     DistanceDriven(
         title = R.string.view_distance_driven,
         value = { distanceDriven.toString() },
