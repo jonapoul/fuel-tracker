@@ -24,13 +24,21 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class ListFragment : CommonFragment(layout = R.layout.fragment_list, menu = null) {
+class ListFragment : CommonFragment(layout = R.layout.fragment_list, menu = R.menu.menu_list) {
     override val binding by viewBinding(FragmentListBinding::bind)
     private val viewModel by viewModels<ListViewModel>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initialiseRecyclerView()
+    }
+
+    override fun onMenuItemSelected(menuItemId: Int): Boolean {
+        when (menuItemId) {
+            R.id.action_sort -> showSortDialog()
+            else -> return false
+        }
+        return true
     }
 
     private fun initialiseRecyclerView() {
@@ -86,5 +94,21 @@ class ListFragment : CommonFragment(layout = R.layout.fragment_list, menu = null
                 setSimpleNegativeButton()
             },
         )
+    }
+
+    private fun showSortDialog() {
+        val ctx = requireContext()
+        val currentField = viewModel.getSortingField()
+        val titlesRes = EntityField.values().map { it.title }
+        val titles = titlesRes.map(::getString).toTypedArray()
+        val selectedIndex = titlesRes.indexOf(currentField.title)
+        MaterialAlertDialogBuilder(ctx)
+            .setTitle(R.string.sort_dialog_title)
+            .setSingleChoiceItems(titles, selectedIndex) { dialog, which ->
+                val field = EntityField.values()[which]
+                viewModel.setSortingField(field)
+                dialog.dismiss()
+            }.setSimpleNegativeButton()
+            .show()
     }
 }

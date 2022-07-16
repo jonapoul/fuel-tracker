@@ -25,8 +25,11 @@ internal class ListViewModel @Inject constructor(
     val items: Flow<List<ListItem>> =
         observeListUseCase.items
 
-    fun setField(field: EntityField) {
-        observeListUseCase.setDisplayField(field)
+    fun getSortingField(): EntityField =
+        observeListUseCase.getSortingField()
+
+    fun setSortingField(field: EntityField) {
+        observeListUseCase.setSortingField(field)
     }
 
     fun editItem(navController: NavController, entityId: Long) {

@@ -20,7 +20,7 @@ internal class ListViewHolder(
 
             menuButton.setOnClickListener { view ->
                 val popup = PopupMenu(view.context, view)
-                popup.menuInflater.inflate(R.menu.menu_list, popup.menu)
+                popup.menuInflater.inflate(R.menu.menu_list_item, popup.menu)
                 popup.setOnMenuItemClickListener {
                     when (it.itemId) {
                         R.id.action_view -> onClickView.invoke(item.entityId)

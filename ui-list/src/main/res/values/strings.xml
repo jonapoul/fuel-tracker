@@ -6,6 +6,8 @@
     <string name="menu_edit">Edit</string>
     <string name="menu_delete">Delete</string>
 
+    <string name="menu_sort_by">Sort by</string>
+
     <string name="none_found_text">No entries found!</string>
     <string name="edit_button">Edit</string>
 
@@ -15,8 +17,8 @@
     <string name="view_distance_remaining">Remaining</string>
     <string name="view_mileage">Mileage</string>
     <string name="view_speed">Speed</string>
-    <string name="view_cost_total">Total</string>
-    <string name="view_cost_per">Cost/litre</string>
+    <string name="view_cost_total">Total cost</string>
+    <string name="view_cost_per">Cost per litre</string>
     <string name="view_vendor">Vendor</string>
     <string name="view_location">Location</string>
 
@@ -29,4 +31,6 @@
     <string name="delete_undone">Data deletion has been undone</string>
     <string name="delete_succeeded">Successfully deleted entry from %1$s</string>
     <string name="undo_delete">Undo</string>
+
+    <string name="sort_dialog_title">Sort Items</string>
 </resources>

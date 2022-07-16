@@ -16,7 +16,7 @@ internal class ObserveListUseCase @Inject constructor(
 
     val items: Flow<List<ListItem>>
         get() = combine(dao.getAll(), entityField) { entities, entityField ->
-            entities.map { entity ->
+            entityField.sorting.invoke(entities).map { entity ->
                 ListItem(
                     entityId = entity.id,
                     date = FORMATTER.format(entity.instant),
@@ -26,9 +26,12 @@ internal class ObserveListUseCase @Inject constructor(
             }
         }
 
-    fun setDisplayField(field: EntityField) {
+    fun setSortingField(field: EntityField) {
         entityField.value = field
     }
+
+    fun getSortingField(): EntityField =
+        entityField.value
 
     private companion object {
         val FORMATTER = "EE dd MMM yyyy".localisedFormatter
