@@ -89,6 +89,7 @@ class InputFragment : CommonFragment(layout = R.layout.fragment_input, menu = nu
 
     private fun initialiseValidation() {
         with(binding) {
+            dateTime.setChangeListener(viewModel::updateInstant)
             distanceDriven.setUpValidation(viewModel::validateDistanceDriven)
             distanceRemaining.setUpValidation(viewModel::validateDistanceLeft)
             mileage.setUpValidation(viewModel::validateMileage)

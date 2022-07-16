@@ -21,6 +21,7 @@ import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
+import org.threeten.bp.Instant
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -81,6 +82,10 @@ internal class InputViewModel @Inject constructor(
                 onSuccess.invoke()
             }
         }
+    }
+
+    fun updateInstant(instant: Instant) {
+        updateDraft { copy(instant = instant) }
     }
 
     fun validateDistanceDriven(string: String): Boolean =
