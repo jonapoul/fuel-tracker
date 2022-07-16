@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class ObserveCurrencyUseCase @Inject constructor(
-    preferences: FuelTrackerPreferences,
+    preferences: CorePreferences,
 ) {
     val selectedCurrency: Flow<Currency> =
         preferences.currencyFlow

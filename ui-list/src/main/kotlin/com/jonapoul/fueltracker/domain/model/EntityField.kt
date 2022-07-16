@@ -1,5 +1,6 @@
 package com.jonapoul.fueltracker.domain.model
 
+import androidx.annotation.Keep
 import androidx.annotation.StringRes
 import com.jonapoul.fueltracker.data.db.RefuelEntity
 import com.jonapoul.fueltracker.data.localisedFormatter
@@ -9,6 +10,7 @@ import java.text.DecimalFormat
 private val TWO_DP = DecimalFormat("0.##")
 private val DATE_FORMATTER = "EE dd MMM yyyy".localisedFormatter
 
+@Keep
 internal enum class EntityField(
     @StringRes val title: Int,
     val value: RefuelEntity.() -> String,
@@ -67,4 +69,8 @@ internal enum class EntityField(
         value = { location ?: "" },
         sorting = { sortedBy { it.location ?: "" } },
     );
+
+    companion object {
+        val default = Instant
+    }
 }
