@@ -34,7 +34,4 @@ internal class ListViewHolder(
             }
         }
     }
-
-    private companion object {
-    }
 }
