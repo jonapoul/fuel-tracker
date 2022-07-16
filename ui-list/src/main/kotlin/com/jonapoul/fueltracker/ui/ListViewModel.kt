@@ -36,6 +36,10 @@ internal class ListViewModel @Inject constructor(
         navigationUseCase.editItem(navController, entityId)
     }
 
+    fun createItem(navController: NavController) {
+        navigationUseCase.createItem(navController)
+    }
+
     suspend fun getEntity(entityId: Long): RefuelEntity? =
         fetchDataUseCase.fetchEntity(entityId)
 

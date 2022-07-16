@@ -10,6 +10,7 @@
 
     <string name="none_found_text">No entries found!</string>
     <string name="edit_button">Edit</string>
+    <string name="create_button">Add new</string>
 
     <string name="colon">:</string>
     <string name="view_instant">Date</string>

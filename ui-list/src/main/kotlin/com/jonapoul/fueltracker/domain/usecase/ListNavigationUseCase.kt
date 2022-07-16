@@ -13,4 +13,10 @@ internal class ListNavigationUseCase @Inject constructor(
             directions.toEdit(entityId)
         )
     }
+
+    fun createItem(navController: NavController) {
+        navController.safelyNavigate(
+            directions.toCreate()
+        )
+    }
 }

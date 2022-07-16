@@ -31,6 +31,7 @@ class ListFragment : CommonFragment(layout = R.layout.fragment_list, menu = R.me
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initialiseRecyclerView()
+        initialiseCreateButton()
     }
 
     override fun onMenuItemSelected(menuItemId: Int): Boolean {
@@ -55,6 +56,10 @@ class ListFragment : CommonFragment(layout = R.layout.fragment_list, menu = R.me
             binding.recyclerView.hideIfTrue(isEmpty)
             binding.noneFoundText.showIfTrue(isEmpty)
         }
+    }
+
+    private fun initialiseCreateButton() {
+        binding.createButton.setOnClickListener { viewModel.createItem(navController) }
     }
 
     private fun viewItem(entityId: Long) {
