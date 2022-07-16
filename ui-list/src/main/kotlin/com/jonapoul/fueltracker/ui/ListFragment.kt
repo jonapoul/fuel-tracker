@@ -59,10 +59,9 @@ class ListFragment : CommonFragment(layout = R.layout.fragment_list, menu = null
             val inflater = LayoutInflater.from(context)
             val dialogBinding = DialogViewBinding.inflate(inflater)
             EntityField.values().forEach {
-                val row = DialogViewRowBinding.inflate(inflater)
+                val row = DialogViewRowBinding.inflate(inflater, dialogBinding.root, true)
                 row.title.setText(it.title)
                 row.value.text = it.value.invoke(entity)
-                dialogBinding.root.addView(row.root)
             }
 
             /* Show the dialog */

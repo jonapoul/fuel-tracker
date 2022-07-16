@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="@dimen/very_small"
     android:minHeight="?android:attr/listPreferredItemHeight"
+    app:cardUseCompatPadding="false"
     app:contentPadding="0dp">
 
     <LinearLayout
@@ -53,7 +55,12 @@
                     android:layout_height="wrap_content"
                     android:textColor="?android:textColorSecondary"
                     android:textSize="@dimen/text_size_small"
-                    tools:text="Total cost:" />
+                    tools:text="Total cost" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/colon" />
 
                 <TextView
                     android:id="@+id/field_value"
@@ -78,7 +85,8 @@
             android:contentDescription="@string/edit_button"
             android:padding="@dimen/medium"
             android:src="@drawable/ic_more"
-            app:tint="@color/onSurface" />
+            app:tint="@color/onSurface"
+            tools:ignore="TouchTargetSizeCheck" />
 
     </LinearLayout>
 

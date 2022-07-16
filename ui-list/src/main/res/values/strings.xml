@@ -9,14 +9,15 @@
     <string name="none_found_text">No entries found!</string>
     <string name="edit_button">Edit</string>
 
-    <string name="view_distance_driven">Driven:</string>
-    <string name="view_distance_remaining">Remaining:</string>
-    <string name="view_mileage">Mileage:</string>
-    <string name="view_speed">Speed:</string>
-    <string name="view_cost_total">Total cost:</string>
-    <string name="view_cost_per">Cost/litre:</string>
-    <string name="view_vendor">Vendor:</string>
-    <string name="view_location">Location:</string>
+    <string name="colon">:</string>
+    <string name="view_distance_driven">Driven</string>
+    <string name="view_distance_remaining">Remaining</string>
+    <string name="view_mileage">Mileage</string>
+    <string name="view_speed">Speed</string>
+    <string name="view_cost_total">Total</string>
+    <string name="view_cost_per">Cost/litre</string>
+    <string name="view_vendor">Vendor</string>
+    <string name="view_location">Location</string>
 
     <string name="view_dialog_title">View Item</string>
     <string name="delete_dialog_title">Delete Item</string>
